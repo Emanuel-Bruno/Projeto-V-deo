@@ -26,8 +26,8 @@
     <video id="video" src="{{video.video.url}}" type="video/mp4"></video>
     <div class="caixote">
         <div class="row mb-4">
-            <div class="col-2 float-right">
-                <button class="btn" id="toggle_pp" onclick="togglePP()">
+            <div class="col-2">
+                <button class="btn" id="toggle_pp" onclick="togglePP()" style="margin-left: 80px">
                     <img id="video_icon_play" src="{% static 'video/icons/Play.png' %}" alt="iconPlay">
                     <img class="esconder" id="video_icon_pause" src="{% static 'video/icons/Pause.png' %}" alt="iconPause">
                 </button>
