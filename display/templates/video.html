@@ -1,0 +1,116 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head_css %}
+
+<link rel="stylesheet" href="{% static 'video/css/video.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js"></script>
+
+{% endblock %}
+
+{% block body_cont %}
+<!-- Categorias -->
+<div class="c_categorias dragscroll">
+    {% for categoria in categorias %}
+    <a class="c_categoria_link" href="{% url 'videos' %}?cat={{categoria.nome}}">
+    <div class="c_categoria">
+    {{categoria.nome}}
+    </div>
+    </a>
+    {% endfor %}
+</div>
+<!-- Fim -->
+
+<div class="video mb-4">
+    
+    <video id="video" src="{{video.video.url}}" type="video/mp4"></video>
+    <div class="caixote">
+        <div class="row mb-4">
+            <div class="col-2 float-right">
+                <button class="btn" id="toggle_pp" onclick="togglePP()">
+                    <img id="video_icon_play" src="{% static 'video/icons/Play.png' %}" alt="iconPlay">
+                    <img class="esconder" id="video_icon_pause" src="{% static 'video/icons/Pause.png' %}" alt="iconPause">
+                </button>
+            </div>
+            <div class="col-8">
+                <input class="slider_tempo" id="player_time_atual" type="range" id="weight" min="0" value="0" max="1" step="0.01" onchange="tempoAtual(this.value)">
+            </div>
+            <div class="col-2">
+                <input class=" ml-8 slider_volume" type="range" id="weight" min="0" value="0.5" max="1" step="0.02" onchange="trocarVolume(this.value)">
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+<!-- Lista de vídeos -->
+<div class="row mb-4 mt-5">
+    {% for video in videos %}
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+        <div class="card_video">
+            <div class="foto_capa">
+                <img src="{{video.foto_capa.url}}" class="card-img-top" alt="imagem que representa esse card">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{video.nome}}</h5>
+                <a href="{% url 'video' video.id %}">
+                <span class="btn badge badge-primary">Assistir</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- Fim -->
+
+{% endblock %}
+
+{% block body_js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    const meu_video = document.querySelector('#video')
+    function togglePP(){
+        if(meu_video.paused){
+            meu_video.play()
+
+            $("#video_icon_pause").removeClass("esconder")
+            $("#video_icon_play").addClass("esconder")
+
+        }else{
+            meu_video.pause()
+
+            $("#video_icon_pause").addClass("esconder")
+            $("#video_icon_play").removeClass("esconder")
+        }
+    }
+
+    const tempoAtual = (tempo) => {
+        meu_video.currentTime = (meu_video.duration*tempo)
+    }
+
+    setInterval(() => {
+        let tempoAtual=(meu_video.currentTime/meu_video.duration)
+        let elemento = document.getElementById('player_time_atual')
+        elemento.value=tempoAtual
+        
+    }, 1000);
+
+
+    meu_video.addEventListener('ended', ()=>{
+        $("#video_icon_pause").addClass("esconder")
+        $("#video_icon_play").removeClass("esconder")
+    })
+
+    const trocarVolume = (value) => {
+        meu_video.volume=value
+    }
+
+   
+</script>
+    
+
+{% endblock%}

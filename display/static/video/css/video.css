@@ -1,0 +1,90 @@
+.video {
+    width: 100%;
+    z-index: -3;
+}
+.video video{
+    max-height: 440px;
+    max-width: 900px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
+}
+.slider_volume{
+    transform: rotate(-90deg); 
+    max-width: 60px;
+    height: 5px;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #444;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #95F9E3;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid #444;  /* creates padding around scroll thumb */
+    padding-bottom: 80px;
+  }
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      width: 100%;
+      -webkit-appearance: none;
+      background-color: #444;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 5px;
+      -webkit-appearance: none;
+      color: #95F9E3;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 5px;
+      cursor: ew-resize;
+      background: #8c9e9a;
+      box-shadow: -1000px 0 0 1000px #95F9E3;
+    }
+
+}
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #95F9E3; 
+}
+
+input[type="range"]::-moz-range-track {  
+  background-color: #444;
+}
+
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #95F9E3; 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #444;
+}
+
+.esconder{
+  display: none;
+}
+
+.caixote{
+  position: relative;
+  margin-top: -120px;
+  z-index: 2;;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}

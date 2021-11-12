@@ -1,0 +1,31 @@
+.c_categorias{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #dddd;
+    
+}
+a.c_categoria_link{
+    text-decoration: none;
+}
+.c_categoria{
+    min-width: 13rem;
+    height: 4rem;
+    margin-right: 10px;
+    background-color: #69EBD0;
+    color: black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+.c_categoria:hover{
+    font-weight: 800;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}

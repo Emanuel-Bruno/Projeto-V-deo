@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'global/css/categorias.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js"></script>
+{% endblock %}
+
+{% block body_cont %}
+<!-- Categorias -->
+<div class="c_categorias dragscroll">
+    {% for categoria in categorias %}
+    <a class="c_categoria_link" href="{% url 'videos' %}?cat={{categoria.nome}}">
+    <div class="c_categoria">
+    {{categoria.nome}}
+    </div>
+    </a>
+    {% endfor %}
+</div>
+<!-- Fim -->
+    
+
+<!-- Lista de vídeos -->
+<div class="row mb-4">
+    {% for video in videos %}
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+        <div class="card_video">
+            <div class="foto_capa">
+                <img src="{{video.foto_capa.url}}" class="card-img-top" alt="imagem que representa esse card">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{video.nome}}</h5>
+                <a href="{% url 'video' video.id %}">
+                <span class="btn badge badge-primary">Assistir</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- Fim -->
+{% endblock %}
+
+{% block body_js %}
+{% endblock%}

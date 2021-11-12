@@ -1,0 +1,19 @@
+.card_video {
+    background-color: #69EBD0;
+    
+}
+.foto_capa{
+    height: 200px;
+    background-color: #000;
+}
+
+
+.card-img-top {
+    margin-top: 2px;
+    max-height: 200px;
+    border-radius: 0;
+}
+
+.badge {
+    background-color: #558564 !important;
+}
